@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -15,13 +15,14 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css'%}" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Pedro Henrique</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'assets/img/profile.jpg'%}" alt="Pedro Henrique" /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'assets/img/profile.jpeg'%}" alt="Pedro Henrique" /></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,8 +31,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experiência</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Educação</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interesses</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Conquistas</a></li>
+                    <!--li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interesses</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Conquistas</a></li>-->
                 </ul>
             </div>
         </nav>
@@ -66,17 +67,20 @@
                             <h3 class="mb-0">Análise de Dados para CONTABILIDADE</h3>
                             <div class="subheading mb-3">Pandas</div>
                             <p>Esse trabalho surgiu devido uma necessidade que eu tinha em minhas rotinas contábeis, basicamente eu precisava abrir várias páginas de um PDF e para cada compra que havia neste arquivo eu pesquisava os seus respectivos pagamentos, assim saberia quais compras estavam com problemas para resolver, então consegui ler esses dados em excel por meio do python e com o Pandas consegui fazer essa análise mais precisa e em tempo últil, dessa forma aquilo o que eu poderia levar dias ou semanas fazendo, agora realizo em minutos</p>
-                            <img src="{% static 'assets/img/Auditor.jpg'%}">
-                            <img src="{% static 'assets/img/Grafico.jpg'%}">
+                            <img class="maior" src="{% static 'assets/img/Auditor.jpg'%}">
+                            <img class="maior" src="{% static 'assets/img/Grafico.jpg'%}">
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">2019</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">2020</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Busca CNPJ</h3>
                             <div class="subheading mb-3">Django</div>
-                            <p>Esse projeto é uma aplicação WEB que consome os dados de uma API pública da Receita Federal para consulta de CNPJ, nele eu coloquei em prática o Framework Django do Python, <a href="https://pedro.pythonanywhere.com/">Consulte um CNPJ aqui!</a>
-                            <img src="{% static 'assets/img/cnpj.png'%}">
+                            <p>Esse projeto é uma aplicação WEB que consome os dados de uma API pública da Receita Federal para consulta de CNPJ, nele eu coloquei em prática o Framework Django do Python.</p>
+                            <form action="cnpj" method="get">
+                                <input class="botao" type="submit" value="Consulte um CNPJ aqui!">
+                            </form>
+                            <img class="maior" src="{% static 'assets/img/cnpj1.png'%}">
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">Março - Abril 2021</span></div>
                     </div>
@@ -84,8 +88,13 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Clássico Fliperama</h3>
                             <div class="subheading mb-3">Javascript</div>
-                            <p>Esse jogo é um projeto simples de Javascript que fiz durante um Nanodegree da Udacity. <a href="game">Você consegue encarar?</a></p>
-                            <img src="{% static 'assets/img/game.png'%}">
+                            <p>Esse jogo é um projeto simples de Javascript que fiz durante um Nanodegree da Udacity.
+                            <form action="https://github.com/vic012/Classico-fliperama">
+                                
+                                <button class="botao">Clássico Fliperama</button>
+                            </form>
+                            <img class="maior" src="{% static 'assets/img/game.png'%}">
+                            
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">Dezembro 2018</span></div>
                     </div>
@@ -97,11 +106,70 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5">Educação</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">UNOPAR</h3>
+                        <ul class="fa-ul mb-0">
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                UNOPAR
+                                <div class="flex-shrink-0"><span class="text-primary">Fevereiro de 2015 - Março de 2020</span></div>
+                            </li>
                             <div class="subheading mb-3">Bacharel em CIências contábeis e pós graduadoe em Contabilidade, Perícia e Auditoria</div>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Fevereiro de 2015 - Março de 2020</span></div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                UDACITY
+                                <div class="flex-shrink-0"><span class="text-primary">Dezembro de 2018</span></div>
+                            </li>
+                            <div class="subheading mb-3">Introdução à programação</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                UNOPAR
+                                <div class="flex-shrink-0"><span class="text-primary">Março de 2019</span></div>
+                            </li>
+                            <div class="subheading mb-3">Programação em HTML 5</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2019</span></div>
+                            </li>
+                            <div class="subheading mb-3">Python 3 parte 1: Introdução à nova versão da linguagem</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2019</span></div>
+                            </li>
+                            <div class="subheading mb-3">Python Pandas: Tratando e analisando dados</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Junho de 2019</span></div>
+                            </li>
+                            <div class="subheading mb-3">Python 3 parte 2: Avançando na linguagem</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
+                            </li>
+                            <div class="subheading mb-3">Python 3: Introdução a Orientação a objetos</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
+                            </li>
+                            <div class="subheading mb-3">Python 3: Avançando na orientação a objetos</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
+                            </li>
+                            <div class="subheading mb-3">HTTP: Entendendo a web por baixo dos panos</div>
+                            <li>
+                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                ALURA CURSOS ONLINE
+                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2021</span></div>
+                            </li>
+                            <div class="subheading mb-3">String em Python: Extraindo informações de uma URL</div>
+                            
+                            
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -123,7 +191,7 @@
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Python
+                            Python 3
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
@@ -131,11 +199,27 @@
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            HTML e CSS
+                            Pandas
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Pandas, PyAutoGui, Django e Bootstrap
+                            PyAutoGui
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Django
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Bootstrap
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            HTML
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            CSS
                         </li>
                     </ul>
                 </div>
@@ -150,7 +234,7 @@
                 </div>
             </section>
             <hr class="m-0" />
-            Awards-->
+            Awards
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Conquistas & Certificações</h2>
@@ -195,7 +279,7 @@
                         </li>
                     </ul>
                 </div>
-            </section>
+            </section>-->
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

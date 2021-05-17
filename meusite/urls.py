@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
 	path('', views.home, name = 'home'),
-	path('game', views.game, name = 'game')
+	path('cnpj', views.cnpj, name = 'cnpj'),
+	path('dados-recebidos', views.api, name = 'api')
 ]

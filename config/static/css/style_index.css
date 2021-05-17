@@ -1,0 +1,109 @@
+header {
+	text-align: center;
+	background: #87CEFA;
+	color: white;
+	font-size: 30px;
+}
+
+footer {
+	text-align: center;
+	padding: 3px;
+	background-color: #87CEFA;
+	color: white;
+}
+
+.link {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.texto {
+	position: relative;
+    color: #252226;
+    font-weight: 500;
+    font-size: 32px;
+    margin-bottom: 48px;
+    line-height: 1.25;
+}
+
+article {
+	position: relative;
+    color: #716d73;
+    font-family: "Noto Serif";
+    line-height: 1.6;
+    font-size: 20px;
+    margin-bottom: 48px;
+    margin-top: 0;
+}
+
+form {
+	padding-top: 15px;
+	text-align: center;
+}
+
+.nubank, .receitaws {
+	color: #716d73;
+	text-decoration: none;
+}
+
+.nubank, .receitaws: hover {
+	color: #716d73;
+	text-decoration: underline;
+}
+
+.index {
+	color: white;
+	text-align: center;
+}
+
+div {
+	display: inline-block;
+}
+
+img {
+	width: 150px;
+}
+
+.cnpj {
+	border: none;
+	border-bottom: 2px solid #87CEFA;
+	/*width: 100%;*/
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+
+.cnpj:focus {
+	border-radius: 4px;
+  	background-color: lightblue;
+}
+
+.botao {
+	background-color: #1f6f9d;
+	color: white;
+	border: none;
+	/*width: 100%;*/
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
