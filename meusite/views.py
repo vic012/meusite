@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from . import api_cnpj
+from . import apiCep
 
 def home(request):
 	return render(request, 'index.html')
 
 def cnpj(request):
-	return render (request, 'indexCnpj.html')
+	return render(request, 'indexCnpj.html')
+
+def cep(request):
+	return render(request, 'indexCep.html')
 
 def api(request):
 	cnpj = request.GET.get('cnpj')
@@ -32,3 +36,27 @@ def api(request):
 		contexto['resultado'] = resultado
 
 		return render(request, 'form.html', contexto)
+
+def api_cep(request):
+	cep = request.GET.get('cep')
+	if (len(cep) != 8):
+		resultado = {'nome': 'Por favor, insira um CEP com 8 dígitos e sem . / ou -'}
+		contexto = {}		
+		contexto['resultado'] = resultado
+		return render(request, 'indexCep.html', contexto)
+	else:
+		api = apiCep.Cep(cep)
+		api.validaCep()
+		if (api.resultado != 'CEP inválido'):
+			resultado = api.resultado
+
+			contexto = {}
+			contexto['resultado'] = resultado			
+			return render(request, 'formCep.html', contexto)
+		else:
+			resultado = {'nome': 'O CEP informado é inválido'}
+
+			contexto = {}
+			contexto['resultado'] = resultado
+			
+			return render(request, 'indexCEP.html', contexto)

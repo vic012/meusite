@@ -5,6 +5,13 @@ header {
 	font-size: 30px;
 }
 
+.header_cep {
+	text-align: center;
+	background: #ffffff;
+	color: white;
+	font-size: 30px;
+}
+
 footer {
 	text-align: center;
 	padding: 3px;
@@ -57,6 +64,11 @@ form {
 
 .index {
 	color: white;
+	text-align: center;
+}
+
+.index_cep {
+	color: #000000;
 	text-align: center;
 }
 
