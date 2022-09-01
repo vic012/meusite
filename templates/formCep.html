@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sucesso</title>
+	{% load static %}
+	<link rel="icon" href="{% static 'assets/img/buscaCep.png' %}" type="image/gif" sizes="16x16">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
+</head>
+<body>
+	<header>
+		<div>
+			<img src="{% static 'assets/img/buscaCep.png'%}">
+		</div>
+		<div>
+			<h1> Esses são os dados do CEP consultado </h1>
+		</div>
+	</header>
+	<form action="cep" method="get">
+		<input class="botao" type="submit" value="Nova consulta">
+	</form>
+	<table>
+		<tr>
+			<th>CEP</th>
+		</tr>
+		<tr>
+			<td> Logradouro </td>
+			<td> {{resultado.logradouro}} </td>
+		</tr>
+		<tr>
+			<td> Complemento </td>
+			<td> {{resultado.complemento}} </td>
+		</tr>
+		<tr>
+			<td> Bairro </td>
+			<td> {{resultado.bairro}} </td>
+		</tr>
+		<tr>
+			<td> Cidade </td>
+			<td> {{resultado.localidade}} </td>
+		</tr>
+		<tr>
+			<td> Estado </td>
+			<td> {{resultado.uf}} </td>
+		</tr>
+		<tr>
+			<td> IBGE </td>
+			<td> {{resultado.ibge}} </td>
+		</tr>
+		<tr>
+			<td> DDD </td>
+			<td> {{resultado.ddd}} </td>
+		</tr>
+	</table>
+	<footer>
+		<p>Desenvolvido por Pedro Henrique Vicente de Sousa</p>
+		<a class="link" href="mailto:henriquevic012@gmail.com">E-mail</a>
+		<a class="link" href="https://github.com/vic012/">GitHub</a>
+	</footer>
+</body>
+</html>
