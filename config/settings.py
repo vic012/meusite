@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-v4o*1_9-dfp1ok++iav^rpppd6@!g!_g!r=hc9)+df3=p!q(r(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pedro.pythonanywhere.com']
 
 
 # Application definition
@@ -134,7 +134,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
 #Ckeditor
@@ -143,7 +143,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
             'toolbar_Custom': [
                 ['Bold', 'Link', 'Unlink', 'Image']
-            ], 
+            ],
         },
     'special': {
         'toolbar': 'Custom',

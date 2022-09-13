@@ -17,17 +17,17 @@ def api(request):
 	api.consulta()
 	if (api.demonstra == 'Por favor, verifique se o número digitado está correto'):
 		resultado = {'nome': 'Por favor, verifique se o número digitado está correto'}
-		
+
 		contexto = {}
 		contexto['resultado'] = resultado
-		
+
 		return render(request, 'indexCnpj.html', contexto)
 	elif (api.demonstra == 'Por favor, Insira um cnpj com 14 dígitos e sem . / ou -'):
 		resultado = {'nome': 'Por favor, insira um cnpj com 14 dígitos e sem . / ou -'}
 
 		contexto = {}
 		contexto['resultado'] = resultado
-		
+
 		return render(request, 'indexCnpj.html', contexto)
 	else:
 		resultado = api.demonstra
@@ -41,7 +41,7 @@ def api_cep(request):
 	cep = request.GET.get('cep')
 	if (len(cep) != 8):
 		resultado = {'nome': 'Por favor, insira um CEP com 8 dígitos e sem . / ou -'}
-		contexto = {}		
+		contexto = {}
 		contexto['resultado'] = resultado
 		return render(request, 'indexCep.html', contexto)
 	else:
@@ -51,12 +51,12 @@ def api_cep(request):
 			resultado = api.resultado
 
 			contexto = {}
-			contexto['resultado'] = resultado			
+			contexto['resultado'] = resultado
 			return render(request, 'formCep.html', contexto)
 		else:
 			resultado = {'nome': 'O CEP informado é inválido'}
 
 			contexto = {}
 			contexto['resultado'] = resultado
-			
+
 			return render(request, 'indexCEP.html', contexto)

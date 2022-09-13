@@ -1,1 +1,74 @@
-{% load static %}<!DOCTYPE html><html lang="pt-br"><head><meta charset="utf-8"><meta name="keywords" content="Vicpy, Busca CNPJ, CNPJ, Consulta CNPJ, Aprender, Blog, Pedro, Henrique, Pedro Henrique, Python, HTML, CSS, Django, Tutorial"><meta name="author" content="Pedro Henrique"><meta name="description" content="VicPy é o blog sobre programação em Python e Django"><meta name="viewport" content="width=device-width, initial-scale=1"><title>VicPy - Blog</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}"></head><body><div class="cabecalho"><div class="navbar"><a class="active" href="/"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="https://pedro.pythonanywhere.com" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div><div class="titulo"><h1 class='victech'>VicPy</h1></div>{% if usuario != "AnonymousUser" %}<form action="novo_post/" method="get"><input type="submit" value="Novo Post" class="button"></form>{% endif %}<form class="busca" action="/" method="post">{% csrf_token %}<input type="text" placeholder="O que você deseja?" name="busca"><button type="submit"><i class="fa fa-search"></i></button></form></div><div class="linha">{% if erro %}<div class="colunaEsquerda"><script>alert('{{mensagem}}')</script></div><!-- Coluna esquerda --><div class="colunaEsquerda">{% for posts in post %}<div class="card"><form action="{% url 'post_detalhe' posts.pk %}" method="post">{% csrf_token %}<h2>{{posts.titulo}}</a></h2><p>{{posts.data_publicacao}}</p><p>{{posts.descricao}}</p><p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p><input type="submit" value="Ler mais" class="button"></form> </div>{% endfor %}<!-- Paginação da página --><div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div></div>{% else %}<!-- Coluna esquerda --><div class="colunaEsquerda">{% for posts in post %}<div class="card"><form action="{% url 'post_detalhe' posts.pk %}" method="post">{% csrf_token %}<h2>{{posts.titulo}}</a></h2><p>{{posts.data_publicacao}}</p><p>{{posts.descricao}}</p><p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p><input type="submit" value="Ler mais" class="button"></form> </div>{% endfor %}<!-- Paginação da página --><div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div></div>{% endif %}<!-- Coluna Direita --><div class="colunaDireita"><div class="card"><h2>Sobre mim</h2><a href="https://pedro.pythonanywhere.com" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a><p>Olá seja bem vindo! O meu nome é Pedro Henrique, eu sou um aprendiz da linguagem Python, gosto muito de desenvolver soluções e de criar coisas.Neste blog você encontrará um pouco das minhas ideias e pensamentos como um programador, então curta o passeio enquanto navega por aqui.</p></div></div></div><footer> <p>© Pedro Henrique Vicente de Sousa</p></footer></body></html>
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="utf-8">
+      <meta name="keywords" content="Vicpy, Busca CNPJ, CNPJ, Consulta CNPJ, Aprender, Blog, Pedro, Henrique, Pedro Henrique, Python, HTML, CSS, Django, Tutorial">
+      <meta name="author" content="Pedro Henrique">
+      <meta name="description" content="VicPy é o blog sobre programação em Python e Django">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>VicPy - Blog</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
+   </head>
+   <body>
+      <div class="cabecalho">
+         <div class="navbar"><a class="active" href="/"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="https://pedro.pythonanywhere.com" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
+         <div class="titulo">
+            <h1 class='victech'>VicPy</h1>
+         </div>
+         {% if usuario != "AnonymousUser" %}
+         <form action="novo_post/" method="get"><input type="submit" value="Novo Post" class="button"></form>
+         {% endif %}
+         <form class="busca" action="/" method="post">{% csrf_token %}<input type="text" placeholder="O que você deseja?" name="busca"><button type="submit"><i class="fa fa-search"></i></button></form>
+      </div>
+      <div class="linha">
+         {% if erro %}
+         <div class="colunaEsquerda">
+            <script>alert('{{mensagem}}')</script>
+         </div>
+         <!-- Coluna esquerda -->
+         <div class="colunaEsquerda">
+            {% for posts in post %}
+            <div class="card">
+               <form action="{% url 'post_detalhe' posts.pk %}" method="post">
+                  {% csrf_token %}
+                  <h2>{{posts.titulo}}</a></h2>
+                  <p>{{posts.data_publicacao}}</p>
+                  <p>{{posts.descricao}}</p>
+                  <p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p>
+                  <input type="submit" value="Ler mais" class="button">
+               </form>
+            </div>
+            {% endfor %}<!-- Paginação da página -->
+            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div>
+         </div>
+         {% else %}<!-- Coluna esquerda -->
+         <div class="colunaEsquerda">
+            {% for posts in post %}
+            <div class="card">
+               <form action="{% url 'post_detalhe' posts.pk %}" method="post">
+                  {% csrf_token %}
+                  <h2>{{posts.titulo}}</a></h2>
+                  <p>{{posts.data_publicacao}}</p>
+                  <p>{{posts.descricao}}</p>
+                  <p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p>
+                  <input type="submit" value="Ler mais" class="button">
+               </form>
+            </div>
+            {% endfor %}<!-- Paginação da página -->
+            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div>
+         </div>
+         {% endif %}<!-- Coluna Direita -->
+         <div class="colunaDireita">
+            <div class="card">
+               <h2>Sobre mim</h2>
+               <a href="https://pedro.pythonanywhere.com" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
+               <p>Olá seja bem vindo! O meu nome é Pedro Henrique, eu sou um aprendiz da linguagem Python, gosto muito de desenvolver soluções e de criar coisas.Neste blog você encontrará um pouco das minhas ideias e pensamentos como um programador, então curta o passeio enquanto navega por aqui.</p>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <p>© Pedro Henrique Vicente de Sousa</p>
+      </footer>
+   </body>
+</html>

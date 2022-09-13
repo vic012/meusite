@@ -1,0 +1,103 @@
+body{
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/*Estilo do Navbar*/
+.navbar {
+  /*Largura*/
+  width: 100%;
+  /*Cor de fundo*/
+  background-color: #004662;
+  /*Transparencia*/
+  overflow: auto;
+}
+
+/*Especifica o estilo dos links*/
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/*Quando a barra está em evidencia quando o mouse passa*/
+.navbar a:hover {
+  background-color: #00b3d8;
+}
+
+.colunaEsquerda{
+  float: left;
+  width: 75%;
+}
+
+.colunaDireita{
+  float: left;
+  width: 23.2%;
+  padding-left: 20px;
+}
+
+.card{
+  font-family: cursive;
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.linha:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cabecalho{
+  background-color: white;
+}
+
+.titulo h1{ 
+  font-size: 50px;
+  text-align: center;
+}
+
+.titulo p{
+  font-size: 20px;
+  text-align: center;
+}
+
+/*Cor padrão Mudará quando passar o mouse*/
+.active {
+  background-color: #007698;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+.img-sobre{
+  border-radius: 50%;
+  height: 200px;
+}
+
+footer {
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #002236;
+  color: white;
+  display: block;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .colunaEsquerda, .colunaDireita {
+    width: 100%;
+    padding: 0;
+  }
+}
