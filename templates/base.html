@@ -12,14 +12,14 @@
    </head>
    <body>
       <div class="cabecalho">
-         <div class="navbar"><a class="active" href="/"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="https://pedro.pythonanywhere.com" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
+         <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
          <div class="titulo">
             <h1 class='victech'>VicPy</h1>
          </div>
          {% if usuario != "AnonymousUser" %}
          <form action="novo_post/" method="get"><input type="submit" value="Novo Post" class="button"></form>
          {% endif %}
-         <form class="busca" action="/" method="post">{% csrf_token %}<input type="text" placeholder="O que você deseja?" name="busca"><button type="submit"><i class="fa fa-search"></i></button></form>
+         <form class="busca" action="/blog" method="post">{% csrf_token %}<input type="text" placeholder="O que você deseja?" name="busca"><button type="submit"><i class="fa fa-search"></i></button></form>
       </div>
       <div class="linha">
          {% if erro %}
@@ -35,7 +35,7 @@
                   <h2>{{posts.titulo}}</a></h2>
                   <p>{{posts.data_publicacao}}</p>
                   <p>{{posts.descricao}}</p>
-                  <p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p>
+                  <p><a href="/">Pedro Henrique</a></p>
                   <input type="submit" value="Ler mais" class="button">
                </form>
             </div>
@@ -51,7 +51,7 @@
                   <h2>{{posts.titulo}}</a></h2>
                   <p>{{posts.data_publicacao}}</p>
                   <p>{{posts.descricao}}</p>
-                  <p><a href="https://pedro.pythonanywhere.com">Pedro Henrique</a></p>
+                  <p><a href="/">Pedro Henrique</a></p>
                   <input type="submit" value="Ler mais" class="button">
                </form>
             </div>
@@ -62,7 +62,7 @@
          <div class="colunaDireita">
             <div class="card">
                <h2>Sobre mim</h2>
-               <a href="https://pedro.pythonanywhere.com" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
+               <a href="/" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
                <p>Olá seja bem vindo! O meu nome é Pedro Henrique, eu sou um aprendiz da linguagem Python, gosto muito de desenvolver soluções e de criar coisas.Neste blog você encontrará um pouco das minhas ideias e pensamentos como um programador, então curta o passeio enquanto navega por aqui.</p>
             </div>
          </div>

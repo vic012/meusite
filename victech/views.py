@@ -25,7 +25,7 @@ def home(request):
 		try:
 			post = paginacao.page(page)
 		except (EmptyPage, InvalidPage):
-			post = paginacao.page(paginator.num_pages)
+			post = paginacao.page(paginacao.num_pages)
 
 		return render(request, 'base.html', {'post': post, 'usuario':usuario})
 	else:
@@ -46,7 +46,7 @@ def home(request):
 			try:
 				post = paginacao.page(page)
 			except (EmptyPage, InvalidPage):
-				post = paginacao.page(paginator.num_pages)
+				post = paginacao.page(paginacao.num_pages)
 
 			return render(request, 'base.html', {'post': post, 'usuario':usuario, 'erro': erro})
 		else:
@@ -66,7 +66,7 @@ def home(request):
 			try:
 				post = paginacao.page(page)
 			except (EmptyPage, InvalidPage):
-				post = paginacao.page(paginator.num_pages)
+				post = paginacao.page(paginacao.num_pages)
 
 			return render(request, 'base.html', {'post': post, 'usuario':usuario, 'erro': erro, 'mensagem': mensagem})
 
@@ -90,7 +90,7 @@ def post_edit(request, pk):
 			formulario = PostagemForm(instance=postagem)
 	else:
 		return redirect('home')
-		
+
 	return render(request, 'novo_post.html', {'formulario': formulario})
 
 #Praticando class based views

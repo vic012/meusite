@@ -1,1 +1,21 @@
-{% load static %}<!DOCTYPE html><html lang="pt-br"><head><meta charset="utf-8"><meta name="keywords" content="Vicpy, Aprender, Blog, Como, Pedro, Henrique, Python, HTML, CSS, Django, Tutorial"><meta name="author" content="Pedro Henrique"><meta name="description" content="VicPy é o blog sobre programação em Python e Django"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Novo - Post</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}"></head><body><form action="/"><input type="submit" value="Voltar" class=button></form><form method="POST">{% csrf_token %}<h2>Novo post</h2>{{formulario.media}}{{formulario.as_p}}<button class="button">Postar</button></form></body></html>
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="utf-8">
+      <meta name="keywords" content="Vicpy, Aprender, Blog, Como, Pedro, Henrique, Python, HTML, CSS, Django, Tutorial">
+      <meta name="author" content="Pedro Henrique">
+      <meta name="description" content="VicPy é o blog sobre programação em Python e Django">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Novo - Post</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
+   </head>
+   <body>
+      <form action="/blog"><input type="submit" value="Voltar" class=button></form>
+      <form method="POST">
+         {% csrf_token %}
+         <h2>Novo post</h2>
+         {{formulario.media}}{{formulario.as_p}}<button class="button">Postar</button>
+      </form>
+   </body>
+</html>
