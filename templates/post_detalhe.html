@@ -1,5 +1,4 @@
 {% load static %}
-{% load highlightjs %}
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
@@ -12,10 +11,9 @@
       <title>{{post_descricao.titulo}}</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
-      <link href="{% highlightjs_css_url %}" rel='stylesheet' type='text/css'>
+      <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
    </head>
    <body>
-      {{ highlightjs_this }}
       <div class="cabecalho">
          <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
          <div class="titulo">
