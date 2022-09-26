@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'victech',
     'ckeditor',
     'ckeditor_uploader',
-    'highlightjs',
 ]
 
 MIDDLEWARE = [
