@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Projects
+from .models import Projects, Courses
 
 # Register your models here.
 
@@ -12,3 +12,13 @@ class ProjectsAdmin(admin.ModelAdmin):
 	)
 
 admin.site.register(Projects, ProjectsAdmin)
+
+class CoursesAdmin(admin.ModelAdmin):
+
+	list_display = (
+		"course",
+		"institution",
+		"date",
+	)
+
+admin.site.register(Courses, CoursesAdmin)

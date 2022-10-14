@@ -12,3 +12,20 @@ class Projects(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	class Meta:
+	    verbose_name = "Projeto"
+	    verbose_name_plural = "Projetos"
+
+class Courses(models.Model):
+
+    institution = models.CharField("Instituição", max_length=255)
+    course = models.CharField("Curso", max_length=255)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.course
+
+    class Meta:
+        verbose_name = "Curso"
+        verbose_name_plural = "Cursos"

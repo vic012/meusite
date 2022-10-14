@@ -89,7 +89,7 @@
                         <h2 class="mb-5">Projetos Pessoais</h2>
                         <hr class="m-0" /><br>
                         <!------------------------- Item -------------------------->
-                        {% for project in object_list %}
+                        {% for project in projects %}
                             <h3 class="mb-0" style="text-align:center;">{{project.title}}</h3>
                             <img class="maior" src="{{project.image.url}}">
                             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -116,108 +116,16 @@
                     <h2 class="mb-5">Educação</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <ul class="fa-ul mb-0">
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                UNOPAR
-                                <div class="flex-shrink-0"><span class="text-primary">Fevereiro de 2015 - Março de 2020</span></div>
-                            </li>
-                            <div class="subheading mb-3">Bacharel em CIências contábeis e pós graduadoe em Contabilidade, Perícia e Auditoria</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                UDACITY
-                                <div class="flex-shrink-0"><span class="text-primary">Dezembro de 2018</span></div>
-                            </li>
-                            <div class="subheading mb-3">Introdução à programação</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                UNOPAR
-                                <div class="flex-shrink-0"><span class="text-primary">Março de 2019</span></div>
-                            </li>
-                            <div class="subheading mb-3">Programação em HTML 5</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2019</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python 3 parte 1: Introdução à nova versão da linguagem</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2019</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python Pandas: Tratando e analisando dados</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Junho de 2019</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python 3 parte 2: Avançando na linguagem</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python 3: Introdução a Orientação a objetos</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python 3: Avançando na orientação a objetos</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Abril de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">HTTP: Entendendo a web por baixo dos panos</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">String em Python: Extraindo informações de uma URL</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python Collections parte 1: Listas e Tuplas</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Maio de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python Collections parte 2: Conjuntos e dicionários</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Junho de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">Python Brasil: Validação de dados no padrão nacional</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Julho de 2021</span></div>
-                            </li>
-                            <div class="subheading mb-3">API com Django 3: Django Rest Framework</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Setembro de 2022</span></div>
-                            </li>
-                            <div class="subheading mb-3">Django: modelo, rotas e views</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                ALURA CURSOS ONLINE
-                                <div class="flex-shrink-0"><span class="text-primary">Setembro de 2022</span></div>
-                            </li>
-                            <div class="subheading mb-3">Django: Integração de modelos no DJango: Filtros, Buscas e Admin</div>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                                XP INSTITUTO DE GESTÃO E TECNOLOGIA DA INFORMAÇÃO
-                                <div class="flex-shrink-0"><span class="text-primary">Setembro de 2022</span></div>
-                            </li>
-                            <div class="subheading mb-3">Bootcamp Arquiteto de Soluções</div>
+                            {% if courses %}
+                                {% for course in courses %}
+                                    <li>
+                                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                                        {{course.institution}}
+                                        <div class="flex-shrink-0"><span class="text-primary">{{course.date}}</span></div>
+                                    </li>
+                                    <div class="subheading mb-3">{{course.course}}</div>
+                                {% endfor %}
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

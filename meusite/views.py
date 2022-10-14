@@ -2,12 +2,21 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from . import api_cnpj
 from . import apiCep
-from .models import Projects
+from .models import Projects, Courses
 
 
 class home(ListView):
-	model = Projects
-	template_name = "index.html"
+    #model = Projects
+    template_name = "index.html"
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return Projects.objects.order_by('-date')
+
+    def get_context_data(self, **kwargs):
+        context = super(home, self).get_context_data(**kwargs)
+        context['courses'] = Courses.objects.order_by('-date')
+        return context
 
 
 def cnpj(request):
