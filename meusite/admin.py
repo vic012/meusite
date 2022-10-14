@@ -8,6 +8,7 @@ class ProjectsAdmin(admin.ModelAdmin):
 	list_display = (
 		"title",
 		"date",
+		"link_project",
 	)
 
 admin.site.register(Projects, ProjectsAdmin)

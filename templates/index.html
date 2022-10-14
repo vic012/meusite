@@ -94,12 +94,14 @@
                             <img class="maior" src="{{project.image.url}}">
                             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                                 <div class="flex-grow-1">
-                                    <p>{{project.description}}
-                                    </p>
+                                    <p>{{project.description}}</p>
+                                    <br>
                                     <div class="flex-shrink-0"><span class="text-primary">{{project.date}}</span></div>
-                                    <form action="https://prever.herokuapp.com/" method="get" target="_black">
-                                        <input class="botao" type="submit" value="{{project.title}}">
-                                    </form>
+                                    {% if project.link_project %}
+                                        <form action="{{project.link_project}}" method="get" target="_black">
+                                            <input class="botao" type="submit" value="{{project.title}}">
+                                        </form>
+                                    {% endif %}
                                 </div>
                             </div>
                             <hr class="m-0" /><br>
