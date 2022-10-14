@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from . import api_cnpj
 from . import apiCep
+from .models import Projects
 
 def home(request):
-	return render(request, 'index.html')
+	context = {}
+	projects = list(Projects.objects.order_by('-id'))
+	context["projects"] = projects
+	return render(request, 'index.html', context)
 
 def cnpj(request):
 	return render(request, 'indexCnpj.html')
