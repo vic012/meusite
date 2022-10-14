@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static  
 
 urlpatterns = [
-	path('', views.home, name = 'home'),
+	path('', views.home.as_view(), name = 'home'),
 	path('cnpj', views.cnpj, name = 'cnpj'),
 	path('dados-recebidos', views.api, name = 'api'),
 	path('cep', views.cep, name = 'cep'),

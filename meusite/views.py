@@ -1,13 +1,14 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from . import api_cnpj
 from . import apiCep
 from .models import Projects
 
-def home(request):
-	context = {}
-	projects = list(Projects.objects.order_by('-id'))
-	context["projects"] = projects
-	return render(request, 'index.html', context)
+
+class home(ListView):
+	model = Projects
+	template_name = "index.html"
+
 
 def cnpj(request):
 	return render(request, 'indexCnpj.html')
