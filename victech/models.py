@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 #-------------------> Tutorial <-------------------#
@@ -14,10 +15,15 @@ class Postagem(models.Model):
 	data_criacao = models.DateTimeField(default=timezone.now)
 	data_publicacao = models.DateTimeField(blank=True, null=True)
 	ativo = models.BooleanField(default=True)
+	slug = models.CharField(max_length=200, blank=True, null=True)
 
 	def publish(self):
 		self.data_publicacao = timezone.now()
 		self.save()
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.titulo)
+		super(Postagem, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.titulo

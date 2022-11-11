@@ -36,7 +36,7 @@
          <div class="colunaEsquerda">
             {% for posts in post %}
             <div class="card">
-               <form action="{% url 'post_detalhe' posts.pk %}" method="post">
+               <form action="{% url 'post_detalhe' posts.slug %}" method="post">
                   {% csrf_token %}
                   <h2>{{posts.titulo}}</a></h2>
                   <p>{{posts.data_publicacao}}</p>
@@ -52,7 +52,7 @@
          <div class="colunaEsquerda">
             {% for posts in post %}
             <div class="card">
-               <form action="{% url 'post_detalhe' posts.pk %}" method="post">
+               <form action="{% url 'post_detalhe' posts.slug %}" method="post">
                   {% csrf_token %}
                   <h2>{{posts.titulo}}</a></h2>
                   <p>{{posts.data_publicacao}}</p>

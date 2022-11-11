@@ -70,22 +70,22 @@ def home(request):
 
 			return render(request, 'base.html', {'post': post, 'usuario':usuario, 'erro': erro, 'mensagem': mensagem})
 
-def post_detalhe(request, pk):
-	post_descricao = get_object_or_404(Postagem, pk=pk)
+def post_detalhe(request, slug):
+	post_descricao = get_object_or_404(Postagem, slug=slug)
 	#dados_post = post_descricao.texto.split("\r\n\r\n")
 	usuario = str(request.user)
 	return render(request, 'post_detalhe.html', {'post_descricao': post_descricao, 'dados_post': post_descricao.texto, 'usuario': usuario})
 
-def post_edit(request, pk):
+def post_edit(request, slug):
 	if (str(request.user) != 'AnonymousUser'):
-		postagem = get_object_or_404(Postagem, pk=pk)
+		postagem = get_object_or_404(Postagem, slug=slug)
 		if request.method == "POST":
 			formulario = PostagemForm(request.POST, instance=postagem)
 			if formulario.is_valid():
 				postagem = formulario.save(commit=False)
 				postagem.data_publicacao = timezone.now()
 				postagem.save()
-				return redirect('post_detalhe', pk=postagem.pk)
+				return redirect('post_detalhe', slug=postagem.slug)
 		else:
 			formulario = PostagemForm(instance=postagem)
 	else:

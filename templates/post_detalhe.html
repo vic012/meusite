@@ -20,7 +20,7 @@
             <h1 class='victech'><a href="/blog">VicPy</a></h1>
          </div>
          {% if usuario != "AnonymousUser" %}
-         <form action="{% url 'post_edit' post_descricao.pk %}" method="get"><input type="submit" value="Editar" class="button"></form>
+         <form action="{% url 'post_edit' post_descricao.slug %}" method="get"><input type="submit" value="Editar" class="button"></form>
          {% endif %}
       </div>
       <div class="linha">

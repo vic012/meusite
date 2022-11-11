@@ -7,4 +7,4 @@ class PostagemForm(forms.ModelForm):
 
     class Meta:
         model = Postagem
-        fields = ('ativo', 'titulo', 'descricao', 'texto', 'data_criacao', 'data_publicacao')
+        fields = ('ativo', 'titulo', 'descricao', 'texto', 'data_criacao', 'data_publicacao', 'slug')
