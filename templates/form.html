@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6857120087124175"
+    crossorigin="anonymous"></script>
 	<title>Sucesso</title>
 	{% load static %}
 	<link rel="icon" href="{% static 'assets/img/cnpj.png' %}" type="image/gif" sizes="16x16">
@@ -24,7 +26,7 @@
 			<th>Cadastro Nacional da Pessoa Jurídica</th>
 		</tr>
 		<tr>
-			<td> Nome Empresarial: </td> 
+			<td> Nome Empresarial: </td>
 			<td> {{resultado.nome}} </td>
 		</tr>
 		<tr>
@@ -52,7 +54,7 @@
 		<tr>
 			<th> Código e descrição das atividades econômicas secundárias: </th>
 			{% for item in resultado.atividades_secundarias %}
-				<tr> 
+				<tr>
 					<td>{{item.code}}</td>
 					<td> {{item.text}} </td>
 				</tr>
@@ -65,7 +67,7 @@
 		<tr>
 			<th> Quadro Societário: </th>
 			{% for item in resultado.qsa %}
-				<tr> 
+				<tr>
 					<td>{{item.qual}}</td>
 					<td> {{item.nome}} </td>
 				</tr>
