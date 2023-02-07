@@ -22,4 +22,5 @@ urlpatterns = [
     path('blog/', include('victech.urls')),
 	path('acesso-restrito-pedro/', admin.site.urls),
     path('robots.txt', TemplateView.as_view(template_name="main/robots.txt", content_type="text/plain")),
+    path('projects/aisweb/', include('aisweb.urls'))
 ]
