@@ -73,4 +73,4 @@ def api_cep(request):
 			contexto = {}
 			contexto['resultado'] = resultado
 
-			return render(request, 'indexCEP.html', contexto)
+			return render(request, 'indexCep.html', contexto)

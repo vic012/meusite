@@ -109,7 +109,7 @@ class NovoPost(ListView):
 				postagem = formulario.save(commit=False)
 				postagem.data_publicacao = timezone.now()
 				postagem.save()
-				return redirect('post_detalhe', pk=postagem.pk)
+				return redirect('post_detalhe', slug=postagem.slug)
 		else:
 			return redirect('home')
 
