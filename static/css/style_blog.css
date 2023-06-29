@@ -73,7 +73,7 @@ strong {
 }
 
 .card{
-  font-family: cursive;
+  /*font-family: cursive;*/
   background-color: white;
   padding: 20px;
   margin-top: 20px;
@@ -99,9 +99,9 @@ strong {
   text-align: center;
 }
 
-.texto_postagem {
+/*.texto_postagem {
   font-family: open sans,-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen-sans,ubuntu,cantarell,helvetica neue,sans-serif;
-}
+}*/
 
 /*Cor padrão Mudará quando passar o mouse*/
 .active {
@@ -198,4 +198,11 @@ form.busca::after {
   text-align: left;
   background-color: #007698;
   color: white;
+}
+
+pre.prettyprint {
+    font-family: monospace;
+    padding: 2px;
+    border: none;
+    background-color: #f0f0f0;
 }
