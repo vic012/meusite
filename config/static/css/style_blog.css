@@ -199,3 +199,11 @@ form.busca::after {
   background-color: #007698;
   color: white;
 }
+
+pre.prettyprint {
+    font-family: monospace;
+    padding: 2px;
+    border: none;
+    background-color: #f0f0f0;
+    overflow: auto;
+}
