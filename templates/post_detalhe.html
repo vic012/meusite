@@ -42,6 +42,28 @@
                <h2>{{post_descricao.titulo}}</a></h2>
                <p><a href="/blog">Pedro Henrique</a></p>
                <p>{{post_descricao.data_publicacao}}</p>
+               {% if table_content.content %}
+                  <table>
+                     <thead>
+                        <tr>
+                           <th>Vá direto ao ponto</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <ol>
+                           {% for content in table_content.content %}
+                              <tr>
+                                 <td>
+                                    <li><a href="#{{content.css}}">{{content.title}}</a></li>
+                                 </td>
+                              </tr>
+                           {% endfor %}
+                        </ol>
+                     </tbody>
+                  </table>
+               {% endif %}
+            </div>
+            <div class="card">
                <div class="texto_postagem">{{dados_post|safe}}</div>
                <form action="/blog"><input type="submit" value="Voltar" class=button></form>
             </div>

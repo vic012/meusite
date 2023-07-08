@@ -17,6 +17,7 @@
       <form method="POST">
          {% csrf_token %}
          <h2>Novo post</h2>
+         {{table_content}}
          {{formulario.media}}{{formulario.as_p}}<button class="button">Postar</button>
       </form>
    </body>

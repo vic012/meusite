@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Postagem
 from .form import PostagemForm
+import json
 
 # Create your views here.
 def home(request):
@@ -72,9 +73,15 @@ def home(request):
 
 def post_detalhe(request, slug):
 	post_descricao = get_object_or_404(Postagem, slug=slug)
+	table_content = json.loads(post_descricao.table_content) if post_descricao.table_content else {}
 	#dados_post = post_descricao.texto.split("\r\n\r\n")
 	usuario = str(request.user)
-	return render(request, 'post_detalhe.html', {'post_descricao': post_descricao, 'dados_post': post_descricao.texto, 'usuario': usuario})
+	return render(request, 'post_detalhe.html', {
+		'table_content': table_content,
+		'post_descricao': post_descricao,
+		'dados_post': post_descricao.texto,
+		'usuario': usuario
+	})
 
 def post_edit(request, slug):
 	if (str(request.user) != 'AnonymousUser'):
@@ -82,12 +89,20 @@ def post_edit(request, slug):
 		if request.method == "POST":
 			formulario = PostagemForm(request.POST, instance=postagem)
 			if formulario.is_valid():
-				postagem = formulario.save(commit=False)
-				postagem.data_publicacao = timezone.now()
-				postagem.save()
+				postagem = formulario.save(commit=True)
 				return redirect('post_detalhe', slug=postagem.slug)
 		else:
-			formulario = PostagemForm(instance=postagem)
+			if postagem.table_content:
+				table_content = json.loads(postagem.table_content)
+				title_content = [content["title"] for content in table_content["content"]]
+				title_content = ''.join(title_content)
+				css_title_content = [content["css"] for content in table_content["content"]]
+				css_title_content = ''.join(css_title_content)
+				table_content = {
+					'title_content': title_content,
+					'css_title_content': css_title_content
+				}
+			formulario = PostagemForm(initial=table_content, instance=postagem)
 	else:
 		return redirect('home')
 
@@ -106,9 +121,7 @@ class NovoPost(ListView):
 		if (str(request.user) != 'AnonymousUser'):
 			formulario = PostagemForm(request.POST)
 			if formulario.is_valid():
-				postagem = formulario.save(commit=False)
-				postagem.data_publicacao = timezone.now()
-				postagem.save()
+				postagem = formulario.save(commit=True)
 				return redirect('post_detalhe', slug=postagem.slug)
 		else:
 			return redirect('home')

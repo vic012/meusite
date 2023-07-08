@@ -16,6 +16,7 @@ class Postagem(models.Model):
 	data_publicacao = models.DateTimeField(blank=True, null=True)
 	ativo = models.BooleanField(default=True)
 	slug = models.CharField(max_length=200, blank=True, null=True)
+	table_content = models.JSONField(null=True, blank=True, default=dict)
 
 	def publish(self):
 		self.data_publicacao = timezone.now()
