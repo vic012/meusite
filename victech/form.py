@@ -7,11 +7,13 @@ class PostagemForm(forms.ModelForm):
     texto = RichTextField()
     title_content = forms.CharField(
         label="Títulos do post",
-        help_text="<br><b>Para mais de um separe com vírgula</b>"
+        help_text="<br><b>Para mais de um separe com vírgula</b>",
+        widget=forms.Textarea
     )
     css_title_content = forms.CharField(
         label="ID dos títulos",
-        help_text="<br><b>Declare respectivamente entre vírgulas conforme o campo Títulos do post</b>"
+        help_text="<br><b>Declare respectivamente entre vírgulas conforme o campo Títulos do post</b>",
+        widget=forms.Textarea
     )
 
     class Meta:
