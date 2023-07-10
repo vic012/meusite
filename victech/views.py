@@ -94,15 +94,17 @@ def post_edit(request, slug):
 				return redirect('post_detalhe', slug=postagem.slug)
 		else:
 			if postagem.table_content:
-				table_content = json.loads(postagem.table_content)
-				title_content = [content["title"] for content in table_content["content"]]
-				title_content = ''.join(title_content)
-				css_title_content = [content["css"] for content in table_content["content"]]
-				css_title_content = ''.join(css_title_content)
-				table_content = {
-					'title_content': title_content,
-					'css_title_content': css_title_content
-				}
+				table_content = post_descricao.table_content
+				table_content = json.loads(table_content) if table_content and not isinstance(table_content,dict) else {}
+				if table_content.get("content"):
+					title_content = [content["title"] for content in table_content["content"]] if 
+					title_content = ''.join(title_content)
+					css_title_content = [content["css"] for content in table_content["content"]]
+					css_title_content = ''.join(css_title_content)
+					table_content = {
+						'title_content': title_content,
+						'css_title_content': css_title_content
+					}
 			formulario = PostagemForm(initial=table_content, instance=postagem)
 	else:
 		return redirect('home')
