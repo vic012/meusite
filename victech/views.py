@@ -82,10 +82,22 @@ def home(request):
 
 			return render(request, 'base.html', {'post': post, 'usuario':usuario, 'erro': erro, 'mensagem': mensagem})
 
+
+def replace_partial_text(text, text_find, text_add):
+	if not text or not text_find:
+		return ''
+	initial = text[:text.find(text_find)+len(text_find)-1]
+	final = text[text.find(text_find)+len(text_find)-1:]
+	partial = f" id={text_add}"
+	return f"{initial}{partial}{final}"
+
 def post_detalhe(request, slug):
 	post_descricao = get_object_or_404(Postagem, slug=slug)
-	table_content = post_descricao.table_content
-	table_content = json.loads(table_content) if table_content and not isinstance(table_content,dict) else {}
+	table_content = post_descricao.table_content or {}
+	if table_content and not isinstance(table_content,dict):
+		table_content = json.loads(table_content)
+		for item in table_content["content"]:
+			post_descricao.texto = replace_partial_text(post_descricao.texto, '<h1>', item.get("css"))
 	#dados_post = post_descricao.texto.split("\r\n\r\n")
 	usuario = str(request.user)
 	return render(request, 'post_detalhe.html', {
