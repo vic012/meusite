@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Postagem
 from .form import PostagemForm
+from django.utils.text import slugify
 import json
 
 # Create your views here.
@@ -13,6 +14,11 @@ def home(request):
 			postagens = Postagem.objects.filter(data_criacao__lte=timezone.now()).order_by('-data_criacao')
 		else:
 			postagens = Postagem.objects.filter(ativo=True, data_criacao__lte=timezone.now()).order_by('-data_criacao')
+		for post in postagens:
+			if post.slug:
+				continue
+			post.slug = slugify(post.titulo)
+			post.save()
 		paginacao = Paginator(postagens, 10) # Mostra x posts por página
 		usuario = str(request.user)
 
@@ -31,6 +37,11 @@ def home(request):
 		return render(request, 'base.html', {'post': post, 'usuario':usuario})
 	else:
 		postagens = Postagem.objects.filter(titulo__icontains=request.POST.get('busca'))
+		for post in postagens:
+			if post.slug:
+				continue
+			post.slug = slugify(post.titulo)
+			post.save()
 
 		if (len(postagens) >= 1):
 			erro = False
