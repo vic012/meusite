@@ -73,7 +73,8 @@ def home(request):
 
 def post_detalhe(request, slug):
 	post_descricao = get_object_or_404(Postagem, slug=slug)
-	table_content = json.loads(post_descricao.table_content) if post_descricao.table_content else {}
+	table_content = post_descricao.table_content
+	table_content = json.loads(table_content) if table_content and not isinstance(table_content,dict) else {}
 	#dados_post = post_descricao.texto.split("\r\n\r\n")
 	usuario = str(request.user)
 	return render(request, 'post_detalhe.html', {
