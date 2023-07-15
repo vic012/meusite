@@ -207,3 +207,17 @@ pre.prettyprint {
     background-color: #f0f0f0;
     overflow: auto;
 }
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+#back-to-top:hover {
+  background-color: #555;
+}
