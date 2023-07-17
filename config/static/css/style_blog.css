@@ -204,7 +204,16 @@ pre.prettyprint {
     font-family: monospace;
     padding: 2px;
     border: none;
-    background-color: #f0f0f0;
+    background-color: #f6f6f6;
+    overflow: auto;
+}
+
+pre.prettybash {
+    font-family: monospace;
+    padding: 2px;
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
     overflow: auto;
 }
 
@@ -220,4 +229,11 @@ pre.prettyprint {
 
 #back-to-top:hover {
   background-color: #555;
+}
+
+.type-code {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #619ccd;
+    color: #ffffff;
 }
