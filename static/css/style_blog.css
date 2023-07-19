@@ -208,15 +208,6 @@ pre.prettyprint {
     overflow: auto;
 }
 
-pre.prettybash {
-    font-family: monospace;
-    padding: 2px;
-    border: none;
-    background-color: #000000;
-    color: #ffffff;
-    overflow: auto;
-}
-
 #back-to-top {
   position: fixed;
   bottom: 20px;

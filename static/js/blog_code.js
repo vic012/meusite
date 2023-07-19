@@ -1,7 +1,5 @@
 //Javascript para o blog
-//$('pre').attr('class', 'prettyprint');
-$('.language-python').parent().attr('class', 'prettyprint');
-$('.language-bash').parent().attr('class', 'prettybash');
+$('pre').attr('class', 'prettyprint');
 $(document).ready(function() {
     // Cria duas novas <div>
     var novaDivPython = $('<div class="python-command"></div>');
@@ -14,7 +12,7 @@ $(document).ready(function() {
     trechoExistenteBash.wrap(novaDivBash);
     // Insere a nova div após o trecho existente
     var novaDivTypeCodePython = $('<div class="type-code">Python >>></div>');
-    var novaDivTypeCodeBash = $('<div class="type-code">Bash >>></div>');
+    var novaDivTypeCodeBash = $('<div class="type-code">Linha de comando >>></div>');
     trechoExistentePython.prepend(novaDivTypeCodePython);
     trechoExistenteBash.prepend(novaDivTypeCodeBash);
 });
