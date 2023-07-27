@@ -19,7 +19,10 @@
             <h1 class='victech'>Blog do Pedro</h1>
          </div>
          {% if usuario != "AnonymousUser" %}
-         <form action="novo_post/" method="get"><input type="submit" value="Novo Post" class="button"></form>
+            <span style="display:flex;">
+               <form action="novo_post/" method="get"><input type="submit" value="Novo Post" class="button"></form>
+               <a class="button" href="/acesso-restrito-pedro/">Painel do Administrador</a>
+            </span>
          {% endif %}
          <form class="busca" action="{% url 'home' %}" method="post">
              {% csrf_token %}
@@ -28,6 +31,20 @@
                  <i class="fa fa-search"></i>
              </button>
          </form>
+         <div class="category">
+            {% for department in departments %}
+               <button class="category-drop-btn">{{department.name_department}}</button>
+               <div class="category-drop-content">
+                  {% for category in department.category.all %}
+                     {% if category.slug %}
+                       <a href="{% url 'home_with_category' category_slug=category.slug %}">{{ category }}</a>
+                     {% else %}
+                       <a href="{% url 'home' %}">{{ category }}</a>
+                     {% endif %}
+                  {% endfor %}
+               </div>
+            {% endfor %}
+         </div>
       </div>
       <!--Anuncio-->
       <div class="card">

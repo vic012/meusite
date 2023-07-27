@@ -2,18 +2,24 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Postagem
+from .models import Postagem, Department
 from .form import PostagemForm
 from django.utils.text import slugify
 import json
 
 # Create your views here.
-def home(request):
+def home(request, category_slug=None):
 	if (request.method == 'GET'):
+		departments = list(Department.objects.all().prefetch_related("category"))
 		if request.user.is_authenticated:
-			postagens = Postagem.objects.filter(data_criacao__lte=timezone.now()).order_by('-data_criacao')
+			postagens = Postagem.objects.filter(data_criacao__lte=timezone.now()).order_by(*['-data_criacao'])
 		else:
-			postagens = Postagem.objects.filter(ativo=True, data_criacao__lte=timezone.now()).order_by('-data_criacao')
+			postagens = Postagem.objects.filter(ativo=True, data_criacao__lte=timezone.now()).order_by(*['-data_criacao'])
+		
+		if category_slug:
+			postagens_with_c = postagens.filter(category__slug=category_slug)
+			if postagens_with_c:
+				postagens = postagens_with_c
 		for post in postagens:
 			if post.slug:
 				continue
@@ -32,9 +38,9 @@ def home(request):
 		try:
 			post = paginacao.page(page)
 		except (EmptyPage, InvalidPage):
-			post = paginacao.page(paginacao.num_pages)
+			post = paginacao.page(paginacao.num_pages)	
 
-		return render(request, 'base.html', {'post': post, 'usuario':usuario})
+		return render(request, 'base.html', {'post': post, 'usuario':usuario, 'departments': departments})
 	else:
 		postagens = Postagem.objects.filter(titulo__icontains=request.POST.get('busca'))
 		for post in postagens:
@@ -155,3 +161,8 @@ class NovoPost(ListView):
 			return redirect('home')
 
 		return render(request, 'novo_post.html', {'formulario': formulario})
+
+
+
+		#https://ordinarycoders.com/blog/article/django-sitemap
+		#https://ordinarycoders.com/blog/article/robots-text-file-django

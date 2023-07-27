@@ -228,3 +228,57 @@ pre.prettyprint {
     background-color: #619ccd;
     color: #ffffff;
 }
+
+.category-drop-btn {
+  background-color: #004662;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.category {
+  position: relative;
+  display: inline-block;
+}
+
+/* category Content (Hidden by Default) */
+.category-drop-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the category */
+.category-drop-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of category links on hover */
+.category-drop-content a:hover {background-color: #004662; color: white}
+
+/* Show the category menu on hover */
+.category:hover .category-drop-content {
+  display: block;
+}
+
+/* Change the background color of the category button when the category content is shown */
+.category:hover .category-drop-btn {
+  background-color: #2196f3;
+}
+
+.access {
+  background-color: #004662
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
