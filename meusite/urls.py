@@ -3,6 +3,9 @@ from . import views
 from django.conf import settings  
 from django.conf.urls.static import static  
 
+
+app_name = "my_site"
+
 urlpatterns = [
 	path('', views.home.as_view(), name = 'home'),
 	path('cnpj', views.cnpj, name = 'cnpj'),

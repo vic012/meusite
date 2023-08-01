@@ -1,0 +1,11 @@
+User-Agent: Googlebot
+User-Agent: Bingbot
+User-Agent: SemrushBot-BA
+
+Disallow: acesso-restrito-pedro/
+Disallow: media/
+Disallow: ^media/
+Disallow: dados-recebidos/
+Disallow: dados-recebidos-cep/
+
+Sitemap: https://pedro.pythonanywhere.com/sitemap.xml

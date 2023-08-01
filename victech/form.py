@@ -30,6 +30,18 @@ class PostagemForm(forms.ModelForm):
             'slug'
         )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        table_content = self.instance.table_content
+        table_content = json.loads(table_content) if table_content and not isinstance(table_content,dict) else {}
+        if table_content.get("content"):
+            title_content = [content["title"] for content in table_content["content"]]
+            title_content = ','.join(title_content)
+            self.initial["title_content"] = title_content
+            css_title_content = [content["css"] for content in table_content["content"]]
+            css_title_content = ','.join(css_title_content)
+            self.initial["css_title_content"] = css_title_content
+
     def clean(self):
         cleaned_data = super().clean()
         title_content = cleaned_data.get("title_content")

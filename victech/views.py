@@ -162,7 +162,3 @@ class NovoPost(ListView):
 
 		return render(request, 'novo_post.html', {'formulario': formulario})
 
-
-
-		#https://ordinarycoders.com/blog/article/django-sitemap
-		#https://ordinarycoders.com/blog/article/robots-text-file-django

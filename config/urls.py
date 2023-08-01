@@ -16,11 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from victech.sitemaps import PostagemSitemap, StaticSitemap
+
+#https://ordinarycoders.com/blog/article/django-sitemap
+#https://ordinarycoders.com/blog/article/robots-text-file-django
+
+app_name = "main"
+
+sitemaps = {
+    'static':StaticSitemap,
+    'blog':PostagemSitemap
+}
 
 urlpatterns = [
 	path('', include('meusite.urls')),
     path('blog/', include('victech.urls')),
 	path('acesso-restrito-pedro/', admin.site.urls),
-    path('robots.txt', TemplateView.as_view(template_name="main/robots.txt", content_type="text/plain")),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('projects/aisweb/', include('aisweb.urls'))
 ]
