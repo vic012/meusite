@@ -79,6 +79,17 @@ strong {
   margin-top: 20px;
 }
 
+.body-post .body-head {
+  border: 1px solid red;
+}
+
+.card-esquerda {
+  float: left;
+  margin-top: 20px;
+  background-color: white;
+  width: 23.2%;
+}
+
 .linha:after {
   content: "";
   display: table;
@@ -273,12 +284,4 @@ pre.prettyprint {
 /* Change the background color of the category button when the category content is shown */
 .category:hover .category-drop-btn {
   background-color: #2196f3;
-}
-
-.access {
-  background-color: #004662
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
 }

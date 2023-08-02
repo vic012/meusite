@@ -68,6 +68,9 @@ strong {
 
 .colunaDireita{
   float: left;
+  position: -webkit-sticky; /* Safari & IE */
+  position: sticky;
+  top: 3px;
   width: 23.2%;
   padding-left: 20px;
 }
@@ -77,6 +80,49 @@ strong {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+}
+
+.card-content {
+  float: left;
+  position: -webkit-sticky; /* Safari & IE */
+  position: sticky;
+  top: 20px;
+  margin-top: 20px;
+  background-color: white;
+  width: 20%;
+  padding: 20px;
+}
+
+
+.card-post {
+  width: 72.4%;
+  margin-left: 25.0%;
+}
+
+@media screen and (max-width: 1290px) {
+  .card-content{
+    float: none;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 20px;
+  }
+
+  .card-post {
+    width: 100%;
+    padding: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .card-content table {
+    margin: 20px;
+  }
+
+  .card-post > :is(h1,p,a,div,form) {
+    padding: 20px;
+  }
 }
 
 .linha:after {

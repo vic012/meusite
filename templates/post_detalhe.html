@@ -39,10 +39,7 @@
                 </script>
             </div>
             <a href="#back-to-top-blog" id="back-to-top">Voltar ao início</a>
-            <div class="card" id="back-to-top-blog">
-               <h2>{{post_descricao.titulo}}</a></h2>
-               <p><a href="/blog">Pedro Henrique</a></p>
-               <p>{{post_descricao.data_publicacao}}</p>
+            <div class="card-content">
                {% if table_content.content %}
                   <table>
                      <thead>
@@ -64,7 +61,12 @@
                   </table>
                {% endif %}
             </div>
-            <div class="card">
+            <div class="card card-post" id="back-to-top-blog">
+               <h1>{{post_descricao.titulo}}</a></h1>
+               <p><a href="/blog">Pedro Henrique</a></p>
+               <p>{{post_descricao.data_publicacao}}</p>
+            </div>
+            <div class="card card-post">
                <div class="texto_postagem">{{dados_post|safe}}</div>
                <form action="/blog"><input type="submit" value="Voltar" class=button></form>
             </div>
