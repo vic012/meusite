@@ -125,6 +125,13 @@ strong {
   }
 }
 
+.card-dio img {
+    max-width:400px;
+    max-height:188px;
+    width: auto;
+    height: auto;
+}
+
 .linha:after {
   content: "";
   display: table;
