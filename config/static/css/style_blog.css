@@ -257,7 +257,7 @@ pre.prettyprint {
     font-family: monospace;
     padding: 2px;
     border: none;
-    background-color: #f6f6f6;
+    background-color: #000;
     overflow: auto;
 }
 
