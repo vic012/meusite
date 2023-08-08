@@ -254,11 +254,33 @@ form.busca::after {
 }
 
 pre.prettyprint {
-    font-family: monospace;
-    padding: 2px;
-    border: none;
-    background-color: #000;
-    overflow: auto;
+  font-family: monospace;
+  padding: 2px;
+  border: none;
+  background-color: #000;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Estilos específicos para a barra de rolagem horizontal */
+  overflow-x: scroll; /* Ativa a rolagem horizontal */
+  scrollbar-width: thin; /* Largura da barra de rolagem - pode variar */
+  scrollbar-color: #888888 #000000; /* Cor da barra e do fundo da barra */
+
+  /* Posicionamento da barra de rolagem na parte inferior */
+  position: relative;
+}
+
+/* Estilo da barra de rolagem */
+pre.prettyprint::-webkit-scrollbar {
+  width: 6px; /* Largura da barra de rolagem */
+}
+
+pre.prettyprint::-webkit-scrollbar-thumb {
+  background-color: #888888; /* Cor da barra de rolagem */
+}
+
+pre.prettyprint::-webkit-scrollbar-track {
+  background-color: #000000; /* Cor do fundo da barra de rolagem */
 }
 
 #back-to-top {
