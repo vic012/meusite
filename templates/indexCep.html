@@ -3,7 +3,7 @@
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6857120087124175"
      crossorigin="anonymous"></script>
-	<title>Busca CEP</title>
+	<title>Zip Code Search</title>
 	{% load static %}
 	<link rel="icon" href="{% static 'assets/img/buscaCep.png'%}" type="image/gif" sizes="16x16">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,14 @@
 <body>
 	<header class="header_cep">
 		<div>
-			<img src="{% static 'assets/img/buscaCep.png'%}">
-		</div>
-		<div>
-			<h1 class="index_cep"> Consulte o seu CEP </h1>
+			<h1 class="index_cep">Zip Code Search</h1>
 		</div>
 	</header>
 	<form action="/dados-recebidos-cep" method="get">
 		<!--Necessário para o métod POST-->
 		<!--{% csrf_token %}-->
-		<input class="cep" type="text" name="cep" placeholder="8 Dígitos sem . / ou - ">
-		<input class="botao" type="submit" value="Buscar">
+		<input class="cep" type="text" name="cep" placeholder="01153000">
+		<input class="botao" type="submit" value="Search">
 	</form>
 	<div>
 	<script type="text/javascript">
@@ -38,26 +35,27 @@
     </div>
 	<p style="color:white;text-align:center;background-color:#87CEFA"> {{resultado.nome}} </p>
 
-	<h1 class="texto">O que é um CEP</h1>
+	<h1 class="texto">What is CEP?</h1>
 
 	<article>
-		<img src="{% static 'assets/img/detalhesCep.jpg'%}">
 		<p>
-			O CEP (Código de Endereçamento Postal) é um conjunto numérico constituído de oito algarismos, que orienta e acelera o encaminhamento, o tratamento e a distribuição de objetos de correspondência, por meio da sua atribuição a localidades, logradouros, unidades dos Correios, serviços, órgãos públicos, empresas e edifícios.
+			The CEP (Postal Address Code) is a numerical set made up of eight
+			digits, which guides and speeds up routing, the treatment and
+			distribution of correspondence objects, through their assignment to
+			locations, public places, Post Office units, services, public
+			bodies, companies, and buildings.
 		</p>
 		<p>
-			Fonte: <a class="nubank" href="https://www.correios.com.br/enviar/precisa-de-ajuda/tudo-sobre-cep">Correios</a>
+			Source: <a class="nubank" href="https://www.correios.com.br/enviar/precisa-de-ajuda/tudo-sobre-cep">Correios</a>
 		</p>
 		<p>
-			A API consumida por esse projeto é disponibilizada por: <a class="receitaws" href="https://viacep.com.br/">ViaCEP</a>
+			API consumed by this project is made available by: <a class="receitaws" href="https://viacep.com.br/">ViaCEP</a>
 		</p>
 
 	</article>
 
 	<footer>
-		<p>Desenvolvido por Pedro Henrique Vicente de Sousa</p>
-		<a class="link" href="mailto:henriquevic012@gmail.com">E-mail</a>
-		<a class="link" href="https://github.com/vic012/">GitHub</a>
+		<a class="link" href="/">Developed by Pedro Henrique Vicente de SousaE-mail</a>
 	</footer>
 </body>
 </html>

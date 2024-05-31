@@ -1,28 +1,64 @@
-import requests as http
+import requests
+import re
 
 class CNPJ:
 
-	def __init__(self, cnpj):
+	def __init__(self, cnpj=None):
 		self.__cnpj = cnpj
-		self.__resultado = None
 
-	def consulta(self):
-		if (type(self.__cnpj) == 'int') or (len(self.__cnpj) == 14):
-			cabecalho_api = {'Content-Type': 'application/json'}
-			api = http.get('https://www.receitaws.com.br/v1/cnpj/{}'.format(self.__cnpj, cabecalho_api))
-			status = api.json()['status']
-			if (status == 'ERROR'):
-				self.__resultado = 'Por favor, verifique se o número digitado está correto'
-			else:
-				self.__resultado = api.json()
-		else:
-			self.__resultado = 'Por favor, Insira um cnpj com 14 dígitos e sem . / ou -'
-		
-	@property	
-	def demonstra(self):
-		return self.__resultado
+	def _get_headers(self):
+		headers = {'Content-Type': 'application/json'}
+		return headers
 
-'''teste = CNPJ('00776574000660')
-teste.consulta()
+	def _get_url(self):
+		url = 'https://www.receitaws.com.br/v1/cnpj/'
+		return url
 
-print(teste.demonstra)'''
+	def _get_response(self, cnpj):
+		headers = self._get_headers()
+		url_prefix = self._get_url()
+		url = f"{url_prefix}{cnpj}"
+		response = requests.get(url, headers=headers)
+		print(response.json())
+		return response
+
+	def consultar_cnpj(self):
+		data = {}
+		cnpj = self.__cnpj
+		if cnpj is None:
+			data["status"] = "error"
+			data["message"] = 'Por favor, Insira um cnpj Válido'
+			return data
+
+		cnpj = str(cnpj)
+		clean_cnpj = re.sub(r"\D", "", cnpj)
+
+		if len(clean_cnpj) != 14:
+			data["status"] = "error"
+			data["message"] = f'O CNPJ: {clean_cnpj} precisa contér 14 caracteres'
+			return data
+
+		response = self._get_response(clean_cnpj)
+
+		if response.status_code != 200:
+			data["status"] = "error"
+			data["message"] = f'Não foi possível consultar o {cnpj} informado'
+			return data
+
+		try:
+			data_response = response.json()
+		except Exception:
+			data["status"] = "error"
+			data["message"] = f'Não foi possível consultar o {cnpj} informado'
+			return data
+
+		status = data_response.get("status")
+
+		if status == 'ERROR':
+			data["status"] = "error"
+			data["message"] = 'Por favor, verifique se o número digitado está correto'
+			return data
+
+		data["status"] = "success"
+		data["content"] = data_response
+		return data

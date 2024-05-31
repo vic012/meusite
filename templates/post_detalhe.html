@@ -2,23 +2,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
+      {% comment %}
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6857120087124175"
      crossorigin="anonymous"></script>
+      {% endcomment %}
       <meta charset="utf-8">
-      <meta name="keywords" content="Aprender, Blog, Como, Pedro, Henrique, Python, HTML, CSS, Django, Tutorial">
+      <meta name="keywords" content="Search CNPJ, CNPJ, CNPJ Lookup, Learn, Blog, Pedro, Henrique, Pedro Henrique, Python, HTML, CSS, Django, Tutorial">
       <meta name="author" content="Pedro Henrique">
-      <meta name="description" content="O seu blog sobre programação em Python">
+      <meta name="description" content="Your Blog about technology">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/x-icon" href="{% static 'assets/img/small_profile_1kz_icon.ico' %}">
       <title>{{post_descricao.titulo}}</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>
       <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body>
       <div class="cabecalho">
-         <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
+         <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Home</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> About</a></div>
          <div class="titulo">
-            <h1 class='victech'><a href="/blog">Blog do Pedro</a></h1>
+            <h1 class='victech'><a href="/blog">Pedro's Blog</a></h1>
          </div>
          {% if usuario != "AnonymousUser" %}
          <form action="{% url 'post_edit' post_descricao.slug %}" method="get"><input type="submit" value="Editar" class="button"></form>
@@ -27,62 +31,51 @@
       <div class="linha">
          <div class="colunaEsquerda">
             <div class="card">
-                <script type="text/javascript">
-                	atOptions = {
-                		'key' : 'b44dda13e10d3c00976fecd37bd136a4',
-                		'format' : 'iframe',
-                		'height' : 50,
-                		'width' : 320,
-                		'params' : {}
-                	};
-                	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitdisplaynetwork.com/b44dda13e10d3c00976fecd37bd136a4/invoke.js"></scr' + 'ipt>');
-                </script>
             </div>
-            <a href="#back-to-top-blog" id="back-to-top">Voltar ao início</a>
+            <a href="#back-to-top-blog" id="back-to-top"><i class="fa fa-cloud-upload" style="font-size:48px;color:white;"></i></a>
             <div class="card-content">
                {% if table_content.content %}
-                  <table>
-                     <thead>
-                        <tr>
-                           <th>Vá direto ao ponto</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <ol>
-                           {% for content in table_content.content %}
-                              <tr>
-                                 <td>
-                                    <li><a href="#{{content.css}}">{{content.title}}</a></li>
-                                 </td>
-                              </tr>
-                           {% endfor %}
-                        </ol>
-                     </tbody>
-                  </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vá direto ao ponto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for content in table_content.content %}
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li><a href="#{{content.css}}">{{content.title}}</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                {% endif %}
             </div>
             <div class="card card-post" id="back-to-top-blog">
-               <h1>{{post_descricao.titulo}}</a></h1>
+               <h1>{{post_descricao.titulo}}</h1>
                <p><a href="/blog">Pedro Henrique</a></p>
-               <p>{{post_descricao.data_publicacao}}</p>
+               <p>{{post_descricao.data_publicacao|date:'d-m-Y'}}</p>
             </div>
             <div class="card card-post">
                <div class="texto_postagem">{{dados_post|safe}}</div>
-               <form action="/blog"><input type="submit" value="Voltar" class=button></form>
+               <form action="/blog"><input type="submit" value="Turn back" class=button></form>
             </div>
          </div>
          <div class="colunaDireita">
             <div class="card">
-               <h2>Sobre mim</h2>
+               <h2>About me</h2>
                <a href="/" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
-               <p>Olá seja bem vindo! O meu nome é Pedro Henrique, eu sou um aprendiz da linguagem Python, gosto muito de desenvolver soluções e de criar coisas.Neste blog você encontrará um pouco das minhas ideias e pensamentos como um programador, então curta o passeio enquanto navega por aqui.</p>
+               <p>Hello, welcome! My name is Pedro Henrique, I am a Python language apprentice, I really like to develop solutions and create things. In this blog, you will find some of my ideas and thoughts as a developer.</p>
             </div>
-            <div class="card card-dio">
-                <a href="https://dio.me/curso-intensivo-python/AF3UOTN0H1VP" target="_blank"><img alt="banner" src="{% static 'assets/img/formacao_python.jpg' %}"/></a>
-            </div>
+            {% comment %}
             <div class="card">
                 <a href="https://publishers.adsterra.com/referral/C7xxXkHmmf" target="_blank"><img alt="banner" src="https://landings-cdn.adsterratech.com/referralBanners/png/120%20x%20150%20px.png" /></a>
             </div>
+            {% endcomment %}
          </div>
       </div>
       <footer>

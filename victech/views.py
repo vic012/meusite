@@ -15,7 +15,7 @@ def home(request, category_slug=None):
 			postagens = Postagem.objects.filter(data_criacao__lte=timezone.now()).order_by(*['-data_criacao'])
 		else:
 			postagens = Postagem.objects.filter(ativo=True, data_criacao__lte=timezone.now()).order_by(*['-data_criacao'])
-		
+
 		if category_slug:
 			postagens_with_c = postagens.filter(category__slug=category_slug)
 			if postagens_with_c:
@@ -38,11 +38,11 @@ def home(request, category_slug=None):
 		try:
 			post = paginacao.page(page)
 		except (EmptyPage, InvalidPage):
-			post = paginacao.page(paginacao.num_pages)	
+			post = paginacao.page(paginacao.num_pages)
 
 		return render(request, 'base.html', {'post': post, 'usuario':usuario, 'departments': departments})
 	else:
-		postagens = Postagem.objects.filter(titulo__icontains=request.POST.get('busca'))
+		postagens = Postagem.objects.filter(titulo__icontains=request.POST.get('search'))
 		for post in postagens:
 			if post.slug:
 				continue

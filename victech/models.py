@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
@@ -12,6 +11,7 @@ from ckeditor.fields import RichTextField
 class Category(models.Model):
 	name = models.CharField(verbose_name="Categoria", max_length=256, blank=True, null=True, default="Sem Classificação")
 	slug = models.CharField(max_length=200, blank=True, null=True)
+	color = models.CharField(verbose_name="Cor", max_length=256, blank=True, null=True, default="")
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.name)
@@ -54,3 +54,14 @@ class Postagem(models.Model):
 	class Meta:
 		ordering = ['-data_criacao']
 
+
+class Ideias(models.Model):
+    titulo = models.CharField(max_length=200, default="Ideia")
+    ideias = RichTextField(blank=True, null=True, config_name='special')
+
+    def __str__(self):
+        return self.titulo
+
+    class Meta:
+        verbose_name = "Ideia"
+        verbose_name_plural = "Ideias"

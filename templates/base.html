@@ -1,22 +1,21 @@
 {% load static %}<!DOCTYPE html>
 <html lang="pt-br">
-   <head
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6857120087124175"
-     crossorigin="anonymous"></script>
+   <head>
       <meta charset="utf-8">
-      <meta name="keywords" content="Busca CNPJ, CNPJ, Consulta CNPJ, Aprender, Blog, Pedro, Henrique, Pedro Henrique, Python, HTML, CSS, Django, Tutorial">
+      <meta name="keywords" content="Search CNPJ, CNPJ, CNPJ Lookup, Learn, Blog, Pedro, Henrique, Pedro Henrique, Python, HTML, CSS, Django, Tutorial">
       <meta name="author" content="Pedro Henrique">
-      <meta name="description" content="O seu blog sobre programação em Python">
+      <meta name="description" content="Your blog about Technology">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Blog do Pedro</title>
+      <link rel="icon" type="image/x-icon" href="{% static 'assets/img/small_profile_1kz_icon.ico' %}">
+      <title>Pedro's Blog</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
    </head>
    <body>
       <div class="cabecalho">
-         <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Inicio</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> Sobre</a></div>
+         <div class="navbar"><a class="active" href="/blog"><i class="fa fa-fw fa-home"></i> Home</a><a href="/" target="_blank"><i class="fa fa-address-card-o" aria-hidden="true"></i> About</a></div>
          <div class="titulo">
-            <h1 class='victech'>Blog do Pedro</h1>
+            <h1 class='victech'>Pedro's Blog</h1>
          </div>
          {% if usuario != "AnonymousUser" %}
             <span style="display:flex;">
@@ -26,38 +25,32 @@
          {% endif %}
          <form class="busca" action="{% url 'home' %}" method="post">
              {% csrf_token %}
-             <input type="text" placeholder="O que você deseja?" name="busca">
+             <input type="text" placeholder="What do you want?" name="search">
              <button type="submit">
                  <i class="fa fa-search"></i>
              </button>
          </form>
-         <div class="category">
             {% for department in departments %}
-               <button class="category-drop-btn">{{department.name_department}}</button>
-               <div class="category-drop-content">
-                  {% for category in department.category.all %}
-                     {% if category.slug %}
-                       <a href="{% url 'home_with_category' category_slug=category.slug %}">{{ category }}</a>
-                     {% else %}
-                       <a href="{% url 'home' %}">{{ category }}</a>
-                     {% endif %}
-                  {% endfor %}
-               </div>
+                <div class="category">
+                   <button class="category-drop-btn" category="{{ forloop.counter0 }}">{{department.name_department}}</button>
+                   <div class="category-drop-content" category="{{ forloop.counter0 }}">
+                      {% for category in department.category.all %}
+                         {% if category.slug %}
+                           <a href="{% url 'home_with_category' category_slug=category.slug %}"
+                           style="background-color:{% if category.color %}{{category.color}}{% else %}#004662{% endif %};
+                           color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;display: inline-block;">{{ category }}</a>
+                         {% else %}
+                           <a href="{% url 'home' %}"
+                           style="background-color:{% if category.color %}{{category.color}}{% else %}#004662{% endif %};
+                           color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;display: inline-block;">{{ category }}</a>
+                         {% endif %}
+                      {% endfor %}
+                   </div>
+                </div>
             {% endfor %}
-         </div>
       </div>
       <!--Anuncio-->
       <div class="card">
-        <script type="text/javascript">
-        	atOptions = {
-        		'key' : 'b44dda13e10d3c00976fecd37bd136a4',
-        		'format' : 'iframe',
-        		'height' : 50,
-        		'width' : 320,
-        		'params' : {}
-        	};
-        	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitdisplaynetwork.com/b44dda13e10d3c00976fecd37bd136a4/invoke.js"></scr' + 'ipt>');
-        </script>
       </div>
       <!--Fim do Anuncio-->
       <div class="linha">
@@ -72,14 +65,18 @@
                <form action="{% url 'post_detalhe' posts.slug %}" method="post">
                   {% csrf_token %}
                   <h2>{{posts.titulo}}</a></h2>
-                  <p>{{posts.data_publicacao}}</p>
+                  <p>{{posts.data_publicacao|date:'d-m-Y'}}</p>
                   <p>{{posts.descricao}}</p>
+                  {% if posts.category.all %}
+                    <p style="background-color:{% if posts.category.all.0.color %}{{posts.category.all.0.color}}{% else %}#004662{% endif %};
+                    color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;display: inline-block;">{{posts.category.all.0.name}}</p>
+                  {% endif %}
                   <p><a href="/">Pedro Henrique</a></p>
-                  <input type="submit" value="Ler mais" class="button">
+                  <input type="submit" value="Read more" class="button">
                </form>
             </div>
             {% endfor %}<!-- Paginação da página -->
-            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div>
+            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Previous</a>{% endif %}<span class="current">Page {{ post.number }} of {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Next</a>{% endif %}</span></div>
          </div>
          {% else %}<!-- Coluna esquerda -->
          <div class="colunaEsquerda">
@@ -88,32 +85,32 @@
                <form action="{% url 'post_detalhe' posts.slug %}" method="post">
                   {% csrf_token %}
                   <h2>{{posts.titulo}}</a></h2>
-                  <p>{{posts.data_publicacao}}</p>
+                  <p>{{posts.data_publicacao|date:'d-m-Y'}}</p>
+                  {% if posts.category.all %}
+                    <p style="background-color:{% if posts.category.all.0.color %}{{posts.category.all.0.color}}{% else %}#004662{% endif %};
+                    color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;display: inline-block;">{{posts.category.all.0.name}}</p>
+                  {% endif %}
                   <p>{{posts.descricao}}</p>
                   <p><a href="/">Pedro Henrique</a></p>
-                  <input type="submit" value="Ler mais" class="button">
+                  <input type="submit" value="Read more" class="button">
                </form>
             </div>
             {% endfor %}<!-- Paginação da página -->
-            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Anterior</a>{% endif %}<span class="current">Página {{ post.number }} de {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Próxima</a>{% endif %}</span></div>
+            <div class="pagination"><span class="step-links">{% if post.has_previous %}<a class="button" href="?page={{ post.previous_page_number }}">Previous</a>{% endif %}<span class="current">Page {{ post.number }} of {{ post.paginator.num_pages }}.</span>{% if post.has_next %}<a class="button" href="?page={{ post.next_page_number }}">Next</a>{% endif %}</span></div>
          </div>
          {% endif %}<!-- Coluna Direita -->
          <div class="colunaDireita">
             <div class="card">
-               <h2>Sobre mim</h2>
+               <h2>About me</h2>
                <a href="/" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
-               <p>Olá seja bem vindo! O meu nome é Pedro Henrique, eu sou um aprendiz da linguagem Python, gosto muito de desenvolver soluções e de criar coisas.Neste blog você encontrará um pouco das minhas ideias e pensamentos como um programador, então curta o passeio enquanto navega por aqui.</p>
-            </div>
-            <div class="card card-dio">
-                <a href="https://dio.me/curso-intensivo-python/AF3UOTN0H1VP" target="_blank"><img alt="banner" src="{% static 'assets/img/formacao_python.jpg' %}"/></a>
-            </div>
-            <div class="card">
-                <a href="https://publishers.adsterra.com/referral/C7xxXkHmmf" target="_blank"><img alt="banner" src="https://landings-cdn.adsterratech.com/referralBanners/png/120%20x%20150%20px.png" /></a>
+               <p>Hello, welcome! My name is Pedro Henrique, I am a Python language apprentice, I really like to develop solutions and create things. In this blog, you will find some of my ideas and thoughts as a developer.</p>
             </div>
          </div>
       </div>
       <footer>
          <p>© Pedro Henrique Vicente de Sousa</p>
       </footer>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="{% static 'js/blog_post_category.js'%}"></script>
    </body>
 </html>

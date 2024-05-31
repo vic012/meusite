@@ -1,5 +1,5 @@
 body{
-  font-family: Arial;
+  font-family: courier,helvetica,arial;
   padding: 5px;
   background: #f1f1f1;
 }
@@ -7,13 +7,18 @@ body{
 a {
   color: #004662;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
-strong {
+li {
+    word-wrap: break-word;
+}
+
+/*strong {
   background-color: #858483;
   color: white;
   font-weight: normal;
-}
+}*/
 
 .victech{
   color: #004662;
@@ -76,7 +81,7 @@ strong {
 }
 
 .card{
-  font-family: cursive;
+  /*font-family: cursive;*/
   background-color: white;
   padding: 20px;
   margin-top: 20px;
@@ -125,6 +130,7 @@ strong {
   }
 }
 
+
 .card-dio img {
     max-width:400px;
     max-height:188px;
@@ -153,7 +159,7 @@ strong {
 }
 
 .texto_postagem {
-  font-family: open sans,-apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen-sans,ubuntu,cantarell,helvetica neue,sans-serif;
+  font-family: Arial;
 }
 
 /*Cor padrão Mudará quando passar o mouse*/
@@ -286,7 +292,7 @@ pre.prettyprint::-webkit-scrollbar-track {
 #back-to-top {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 40px;
   padding: 10px;
   background-color: #333;
   color: #fff;
@@ -343,11 +349,34 @@ pre.prettyprint::-webkit-scrollbar-track {
 .category-drop-content a:hover {background-color: #004662; color: white}
 
 /* Show the category menu on hover */
-.category:hover .category-drop-content {
-  display: block;
-}
+/*.category:hover .category-drop-content {
+.category-drop-content:hover {
+    .category-drop-content {
+        display: block;
+    }
+*/
 
 /* Change the background color of the category button when the category content is shown */
-.category:hover .category-drop-btn {
+/*.category:hover .category-drop-btn {*/
+.category-drop-btn:hover {
   background-color: #2196f3;
+}
+
+.content-info {
+    border: 0.05rem solid #448aff;
+    border-radius: 0.2rem;
+    display: flow-root;
+    margin: 1.5625em 0;
+    padding: 0 0.6rem;
+    page-break-inside: avoid;
+}
+
+.content-info .info-tag {
+    background-color: #00b8d41a;
+    font-weight: 700;
+    margin: 0 -0.6rem;
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+    padding-left: 0.8rem;
+    position: relative;
 }

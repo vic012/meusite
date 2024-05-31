@@ -5,6 +5,11 @@ from ckeditor.fields import RichTextField
 
 class PostagemForm(forms.ModelForm):
     texto = RichTextField()
+    descricao = forms.CharField(
+        label="Descrição do POST",
+        help_text="Uma breve apresentação do conteúdo que aparecerá no início do Blog",
+        widget=forms.Textarea
+    )
     title_content = forms.CharField(
         label="Títulos do post",
         help_text="<br><b>Para mais de um separe com vírgula</b>",
@@ -22,6 +27,7 @@ class PostagemForm(forms.ModelForm):
             'ativo',
             'titulo',
             'descricao',
+            'category',
             'title_content',
             'css_title_content',
             'texto',
@@ -53,7 +59,7 @@ class PostagemForm(forms.ModelForm):
         css_title_content = css_title_content.split(",")
         if len(title_content) != len(css_title_content):
             raise forms.ValidationError("Para cada Título insira um ID")
-        
+
         table_content = {"content":[]}
         for title, css in zip(title_content, css_title_content):
             css = css.strip()

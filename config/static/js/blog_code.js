@@ -15,4 +15,7 @@ $(document).ready(function() {
     var novaDivTypeCodeBash = $('<div class="type-code">Linha de comando >>></div>');
     trechoExistentePython.prepend(novaDivTypeCodePython);
     trechoExistenteBash.prepend(novaDivTypeCodeBash);
+
+    //Stiliza o info
+    $(".content-info").prepend($("<p class='info-tag'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i>  !!</p>"));
 });

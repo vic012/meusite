@@ -15,7 +15,10 @@ class home(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(home, self).get_context_data(**kwargs)
-        context['courses'] = Courses.objects.order_by('-date')
+        list_courses = Courses.objects.order_by('-date').values(
+            "institution", "date", "course"
+        )
+        context['courses'] = list_courses
         return context
 
 
@@ -28,28 +31,20 @@ def cep(request):
 def api(request):
 	cnpj = request.GET.get('cnpj')
 	api = api_cnpj.CNPJ(cnpj)
-	api.consulta()
-	if (api.demonstra == 'Por favor, verifique se o número digitado está correto'):
-		resultado = {'nome': 'Por favor, verifique se o número digitado está correto'}
+	data_response = api.consultar_cnpj()
 
-		contexto = {}
-		contexto['resultado'] = resultado
+	if data_response.get("content"):
+	    contexto = {}
+	    contexto['resultado'] = data_response.get("content")
+	    return render(request, 'form.html', contexto)
 
-		return render(request, 'indexCnpj.html', contexto)
-	elif (api.demonstra == 'Por favor, Insira um cnpj com 14 dígitos e sem . / ou -'):
-		resultado = {'nome': 'Por favor, insira um cnpj com 14 dígitos e sem . / ou -'}
+	contexto = {}
+	contexto['resultado'] = data_response.get(
+	    "message",
+	    "Erro ao consultar o CNPJ"
+	) or "Erro ao consultar o CNPJ"
 
-		contexto = {}
-		contexto['resultado'] = resultado
-
-		return render(request, 'indexCnpj.html', contexto)
-	else:
-		resultado = api.demonstra
-
-		contexto = {}
-		contexto['resultado'] = resultado
-
-		return render(request, 'form.html', contexto)
+	return render(request, 'indexCnpj.html', contexto)
 
 def api_cep(request):
 	cep = request.GET.get('cep')
