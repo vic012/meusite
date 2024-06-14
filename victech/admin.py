@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.contrib import admin
 from django.utils.html import mark_safe
-from .models import Postagem, Category, Department, Ideias
+from .models import Postagem, Category, Department, Ideias, ReportUserBlog
 from .form import PostagemForm
 
 
@@ -39,3 +39,14 @@ class PostagemAdmin(admin.ModelAdmin):
 admin.site.register(Postagem, PostagemAdmin)
 
 admin.site.register(Ideias)
+
+class ReportUserBlogAdmin(admin.ModelAdmin):
+	list_display = (
+		"address",
+		"number_of_requests",
+		"last_path",
+		"created_at",
+		"last_access_at",
+	)
+
+admin.site.register(ReportUserBlog, ReportUserBlogAdmin)
