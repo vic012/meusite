@@ -1,7 +1,7 @@
 asgiref==3.4.1
 beautifulsoup4==4.11.2
 bs4==0.0.1
-certifi==2022.6.15.1
+certifi==2023.7.22
 charset-normalizer==2.0.12
 Django==3.2.15
 django-ckeditor==6.3.2
