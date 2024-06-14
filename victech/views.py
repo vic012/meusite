@@ -1,24 +1,19 @@
+import json
+
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.generic.list import ListView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.utils.text import slugify
+
 from .models import Postagem, Department
 from .form import PostagemForm
-from django.utils.text import slugify
-import json
+from .utils import update_or_create_report_user_blog, replace_partial_text
 
-
-def get_client_ip(request):
-	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-	if x_forwarded_for:
-		ip = x_forwarded_for.split(',')[-1].strip()
-	else:
-		ip = request.META.get('REMOTE_ADDR')
-	return ip
 
 # Create your views here.
 def home(request, category_slug=None):
-	print('IP do usu´ário', get_client_ip(request))
+	update_or_create_report_user_blog(request)
 	if (request.method == 'GET'):
 		departments = list(Department.objects.all().prefetch_related("category"))
 		if request.user.is_authenticated:
@@ -98,16 +93,8 @@ def home(request, category_slug=None):
 
 			return render(request, 'base.html', {'post': post, 'usuario':usuario, 'erro': erro, 'mensagem': mensagem})
 
-
-def replace_partial_text(text, text_find, text_add):
-	if not text or not text_find:
-		return ''
-	initial = text[:text.find(text_find)+len(text_find)-1]
-	final = text[text.find(text_find)+len(text_find)-1:]
-	partial = f" id={text_add}"
-	return f"{initial}{partial}{final}"
-
 def post_detalhe(request, slug):
+	update_or_create_report_user_blog(request)
 	post_descricao = get_object_or_404(Postagem, slug=slug)
 	table_content = post_descricao.table_content or {}
 	if table_content and not isinstance(table_content,dict):
