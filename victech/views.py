@@ -7,8 +7,18 @@ from .form import PostagemForm
 from django.utils.text import slugify
 import json
 
+
+def get_client_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[-1].strip()
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+	return ip
+
 # Create your views here.
 def home(request, category_slug=None):
+	print('IP do usu´ário', get_client_ip(request))
 	if (request.method == 'GET'):
 		departments = list(Department.objects.all().prefetch_related("category"))
 		if request.user.is_authenticated:
