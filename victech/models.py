@@ -71,6 +71,7 @@ class ReportUserBlog(models.Model):
 	address = models.CharField(verbose_name="Endereço", max_length=200, blank=True, null=True)
 	number_of_requests = models.PositiveIntegerField(verbose_name="Número de requisições", blank=True, null=True)
 	last_path = models.CharField(verbose_name="Última página visualizada", max_length=200, blank=True, null=True)
+	user_agent = models.CharField(verbose_name="Detalhes do acesso", max_length=255, blank=True, null=True)
 	created_at = models.DateTimeField(verbose_name="Criado em", auto_now_add=True)
 	last_access_at = models.DateTimeField(verbose_name="Última visita", auto_now=True)
 
