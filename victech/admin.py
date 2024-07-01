@@ -45,6 +45,7 @@ class ReportUserBlogAdmin(admin.ModelAdmin):
 		"address",
 		"number_of_requests",
 		"last_path",
+		"user_agent",
 		"created_at",
 		"last_access_at",
 	)
