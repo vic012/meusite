@@ -10,6 +10,7 @@
       <title>Pedro's Blog</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="{% static 'css/style_blog.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style_slideshow_m.css' %}">
    </head>
    <body>
       <div class="cabecalho">
@@ -51,8 +52,8 @@
       </div>
       <!--Anuncio-->
       <div class="card">
-        <a href="https://online.flipbuilder.com/jazl/tpoi/" target="_blank">
-            Escape the trap!
+        <a href="https://discord.gg/Y6atBsj5Nm" target="_blank">
+            Hey, do you want to talk to me? Please join my channel
         </a>
       </div>
       <!--Fim do Anuncio-->
@@ -108,11 +109,41 @@
                <a href="/" target="_blank"><img class="img-sobre" src="{% static 'img/profile.jpeg'%}" alt="Pedro Henrique"></a>
                <p>Hello, welcome! My name is Pedro Henrique, I am a Python language apprentice, I really like to develop solutions and create things. In this blog, you will find some of my ideas and thoughts as a developer.</p>
             </div>
+
             <div class="card">
-                <a href="https://online.flipbuilder.com/jazl/tpoi/" target="_blank">
-                    <img src="{% static 'img/escape_the_trap.png' %}" style="width: 100%; height: 100%; object-fit: cover;" alt="Escpae the trap">
-                </a>
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <a href="https://online.flipbuilder.com/jazl/wiup/" target="_blank">
+                            <img src="{% static 'img/finding_hope.png' %}" style="width: 100%; height: 100%; object-fit: cover;" alt="Finding Hope">
+                        </a>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <a href="https://online.flipbuilder.com/jazl/tpoi/" target="_blank">
+                            <img src="{% static 'img/escape_the_trap.png' %}" style="width: 100%; height: 100%; object-fit: cover;" alt="Escpae the trap">
+                        </a>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <a href="https://online.flipbuilder.com/jazl/xwdy/" target="_blank">
+                            <img src="{% static 'img/why_jesus.png' %}" style="width: 100%; height: 100%; object-fit: cover;" alt="Why Jesus">
+                        </a>
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)" style="text-align:center">❮</a>
+                    <a class="next" onclick="plusSlides(1)" style="text-align:center">❯</a>
+
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span>
+                  <span class="dot" onclick="currentSlide(2)"></span>
+                  <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
             </div>
+
          </div>
       </div>
       <footer>
@@ -120,5 +151,6 @@
       </footer>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script src="{% static 'js/blog_post_category.js'%}"></script>
+      <script src="{% static 'js/slideshow.js'%}"></script>
    </body>
 </html>
